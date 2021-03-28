@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(List<Task> tasks) {
                 if(tasks != null){
                     adapter.setData(tasks);
-
                 }
 
             }
@@ -62,21 +61,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 BottomSheet bottomSheet= BottomSheet.newInstance();
                 bottomSheet.show(getSupportFragmentManager(), BottomSheet.TAG);
-                /*
-                Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
-                startActivity(intent);
 
-                 */
             }
         });
     }
-
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        taskList = viewModel.getAllTasks();
-//        adapter.setDate(taskList);
-//
-//    }
 }

@@ -26,7 +26,7 @@
             app:layout_constraintVertical_bias="0.687" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton"
+            android:id="@+id/category_btn"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
@@ -46,9 +46,9 @@
             android:textStyle="bold"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/materialButton"
+            app:layout_constraintEnd_toEndOf="@+id/category_btn"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/materialButton" />
+            app:layout_constraintStart_toStartOf="@+id/category_btn" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -57,10 +57,11 @@
             android:layout_marginStart="128dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/materialButton"
+            app:layout_constraintStart_toEndOf="@+id/category_btn"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.533"
             app:srcCompat="@drawable/business" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.cardview.widget.CardView>

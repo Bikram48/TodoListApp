@@ -15,7 +15,7 @@ public class Task {
     @NonNull
     private Long id;
     private String title;
-    private String description;
+    private String category;
     @ColumnInfo(name = "created_date")
     private Date createdDate;
     @ColumnInfo(name = "updated_date")
@@ -24,18 +24,18 @@ public class Task {
 
 
     @Ignore
-    public Task(Long id, String title, String description, Date createdDate, Date updatedDate, int priority) {
+    public Task(Long id, String title, String category, Date createdDate, Date updatedDate, int priority) {
         this.id = id;
         this.title = title;
-        this.description = description;
+        this.category = category;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
         this.priority = priority;
     }
 
-    public Task(String title, String description, Date createdDate, Date updatedDate, int priority) {
+    public Task(String title, String category, Date createdDate, Date updatedDate, int priority) {
         this.title = title;
-        this.description = description;
+        this.category = category;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
         this.priority = priority;
@@ -57,12 +57,12 @@ public class Task {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCategory() {
+        return category;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategory(String description) {
+        this.category = category;
     }
 
     public Date getCreatedDate() {

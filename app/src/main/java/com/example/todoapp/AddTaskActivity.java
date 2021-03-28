@@ -37,8 +37,7 @@ public class AddTaskActivity extends AppCompatActivity {
                 String title = titleEditText.getText().toString();
                 String desc = descEditText.getText().toString();
 
-                Task task = new Task(title, desc,  new Date(), new Date(), 1);
-                repository.addTask(task);
+
                 finish();
             }
         });

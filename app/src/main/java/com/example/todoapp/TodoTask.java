@@ -117,7 +117,7 @@ public class TodoTask extends Fragment implements View.OnClickListener{
         if(radioButton.getText().toString().equals("high"))
             priority=3;
 
-        Task task=new Task(task_title,"categoryName",new Date(),new Date(),1);
+        Task task=new Task(task_title,categoryName,new Date(),new Date(),priority);
         repository.addTask(task);
         Intent intent=new Intent(getContext(),MainActivity.class);
         startActivity(intent);

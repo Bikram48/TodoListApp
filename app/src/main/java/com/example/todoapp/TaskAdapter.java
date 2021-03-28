@@ -3,6 +3,7 @@ package com.example.todoapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,16 +49,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        private   TextView taskName;
+        private  TextView taskName;
         private  TextView descTextView;
+        private Button categoryBtn;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.todoitems, parent, false));
+            super(inflater.inflate(R.layout.todoitems_swipe, parent, false));
             taskName=itemView.findViewById(R.id.taskName);
+            categoryBtn=itemView.findViewById(R.id.category_btn);
         }
 
         public void onBind(Task task) {
             taskName.setText(task.getTitle());
+            categoryBtn.setText(task.getCategory());
         }
     }
 }

@@ -22,7 +22,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.bottom_sheet,container,false);
-        //setStyle(DialogFragment.STYLE_NORMAL,R.style.AppTheme);
+        setStyle(DialogFragment.STYLE_NORMAL,R.style.AppTheme);
         viewPager=(ViewPager) view.findViewById(R.id.viewpager);
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(viewPagerAdapter);
@@ -35,9 +35,9 @@ public class BottomSheet extends BottomSheetDialogFragment {
         return new BottomSheet();
     }
 
-   // @Override public int getTheme() {
-       // return R.style.CustomBottomSheetDialog;
-    //}
+   @Override public int getTheme() {
+        return R.style.CustomBottomSheetDialog;
+    }
 }
 
 
