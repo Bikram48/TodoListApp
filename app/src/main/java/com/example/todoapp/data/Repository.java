@@ -50,6 +50,15 @@ public class Repository {
 
     }
 
+    public void delete(Task task){
+        AppDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                dao.delete(task);
+            }
+        });
+    }
+
     public void addTask(Task task){
 
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {

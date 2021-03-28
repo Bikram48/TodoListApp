@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.todoapp.data.AppDatabase;
 import com.example.todoapp.data.Repository;
@@ -21,14 +22,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClicked{
 
     public static String TAG = MainActivity.class.getSimpleName();
 
     private RecyclerView recyclerView;
 
-
-    //private List<Task> taskList;
+    private Repository repository;
+    private List<Task> taskList;
     private TaskAdapter adapter;
     private FloatingActionButton fab;
     private MainViewModel viewModel;
@@ -42,14 +43,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         fab = findViewById(R.id.addTaskBtn);
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        adapter = new TaskAdapter();
+        adapter = new TaskAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //repository = Repository.getRepository(this.getApplication());
+        repository = Repository.getRepository(this.getApplication());
         viewModel.getAllTasks().observe(this, new Observer<List<Task>>() {
             @Override
             public void onChanged(List<Task> tasks) {
                 if(tasks != null){
+                    taskList=tasks;
                     adapter.setData(tasks);
                 }
 
@@ -61,8 +63,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 BottomSheet bottomSheet= BottomSheet.newInstance();
                 bottomSheet.show(getSupportFragmentManager(), BottomSheet.TAG);
-
             }
         });
+    }
+
+    @Override
+    public void onItemClicked(int index, String btnStatus) {
+        if(btnStatus.equals("delete")){
+            repository.delete(taskList.get(index));
+            Log.d(TAG, "delete: "+taskList.get(index).getTitle());
+        }
+        if(btnStatus.equals("edit")){
+            Log.d(TAG, "edit: "+taskList.get(index).getTitle());
+        }
     }
 }
