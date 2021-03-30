@@ -67,6 +67,7 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
         }
         if(btnStatus.equals("edit")){
             repository = Repository.getRepository(getActivity().getApplication());
+
             Intent intent=new Intent(getContext(),EditTaskActivity.class);
             intent.putExtra("Arraylist", (Serializable) taskList);
             intent.putExtra("position",index);

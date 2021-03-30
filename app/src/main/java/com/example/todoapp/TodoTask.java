@@ -58,8 +58,8 @@ public class TodoTask extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_todo_task, container, false);
         titleEditText=view.findViewById(R.id.task_title);
-        datePicker=view.findViewById(R.id.date_picker);
-        radioGroup=view.findViewById(R.id.radioGroup);
+        datePicker=view.findViewById(R.id.update_date_picker);
+        radioGroup=view.findViewById(R.id.update_priority);
         repository=Repository.getRepository(getActivity().getApplication());
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +87,7 @@ public class TodoTask extends Fragment implements View.OnClickListener{
             }
         });
         taskReminder=view.findViewById(R.id.task_reminder);
-        submitBtn=view.findViewById(R.id.submitBtn);
+        submitBtn=view.findViewById(R.id.update_btn);
         for(int i=0;i<category.length;i++){
             category[i]=view.findViewById(buttonIDs[i]);
         }

@@ -1,6 +1,7 @@
 package com.example.todoapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +73,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         private TextView txtDelete;
         private Button categoryBtn;
         private SwipeRevealLayout swipeRevealLayout;
-
+        private View priority_background;
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.todoitems_swipe, parent, false));
             taskName=itemView.findViewById(R.id.taskName);
@@ -80,6 +81,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             txtEdit=itemView.findViewById(R.id.txtEdit);
             txtDelete=itemView.findViewById(R.id.txtDelete);
             swipeRevealLayout=itemView.findViewById(R.id.swipeLayout);
+            priority_background=itemView.findViewById(R.id.priority_background);
             txtDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -98,6 +100,21 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         public void onBind(Task task) {
             taskName.setText(task.getTitle());
             categoryBtn.setText(task.getCategory());
+            switch (task.getPriority()){
+                case 1:
+                    priority_background.setBackgroundColor(Color.parseColor("#FF03DAC5"));
+                    break;
+                case 2:
+                    priority_background.setBackgroundColor(Color.parseColor("#00A9FF"));
+                    break;
+                case 3:
+                    priority_background.setBackgroundColor(Color.parseColor("#FF0000"));
+                    break;
+                default:
+                    priority_background.setBackgroundColor(Color.parseColor("#0f0"));
+                    break;
+
+            }
         }
     }
 }

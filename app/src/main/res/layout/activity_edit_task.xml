@@ -75,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/date_picker"
+        android:id="@+id/update_date_picker"
         android:layout_width="204dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -100,10 +100,10 @@
         android:textColor="@color/black"
         android:textSize="10sp"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBaseline_toBaselineOf="@+id/date_picker"
+        app:layout_constraintBaseline_toBaselineOf="@+id/update_date_picker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/date_picker"
+        app:layout_constraintStart_toEndOf="@+id/update_date_picker"
         app:layout_constraintStart_toStartOf="@+id/textView3" />
 
     <TextView
@@ -114,10 +114,10 @@
         android:layout_marginTop="50dp"
         android:text="Set Priority"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_picker" />
+        app:layout_constraintTop_toBottomOf="@+id/update_date_picker" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/update_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -152,7 +152,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/submitBtn"
+        android:id="@+id/update_btn"
         android:layout_width="204dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -162,7 +162,7 @@
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/update_priority" />
 
     <Button
         android:id="@+id/button"
@@ -172,9 +172,9 @@
         android:layout_marginEnd="10dp"
         android:background="@drawable/button_background"
         android:text="Cancel"
-        app:layout_constraintBaseline_toBaselineOf="@+id/submitBtn"
+        app:layout_constraintBaseline_toBaselineOf="@+id/update_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/submitBtn" />
+        app:layout_constraintStart_toEndOf="@+id/update_btn" />
     .
 </androidx.constraintlayout.widget.ConstraintLayout>

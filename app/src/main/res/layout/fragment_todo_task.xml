@@ -135,7 +135,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/date_picker"
+        android:id="@+id/update_date_picker"
         android:layout_width="204dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -160,10 +160,10 @@
         android:textColor="@color/black"
         android:textSize="10sp"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBaseline_toBaselineOf="@+id/date_picker"
+        app:layout_constraintBaseline_toBaselineOf="@+id/update_date_picker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/date_picker"
+        app:layout_constraintStart_toEndOf="@+id/update_date_picker"
         app:layout_constraintStart_toStartOf="@+id/textView3" />
 
     <TextView
@@ -174,10 +174,11 @@
         android:layout_marginTop="50dp"
         android:text="Set Priority"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_picker" />
+        app:layout_constraintTop_toBottomOf="@+id/update_date_picker" />
+
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/update_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -188,27 +189,31 @@
 
         <RadioButton
             android:id="@+id/high_priority"
-            android:layout_width="wrap_content"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
+            android:background="#FF0000"
+            android:layout_weight="1"
             android:text="high" />
 
         <RadioButton
             android:id="@+id/medium_priority"
-            android:layout_width="wrap_content"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:background="#00A9FF"
             android:text="medium" />
 
         <RadioButton
             android:id="@+id/low_priority"
-            android:layout_width="wrap_content"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:background="@color/teal_200"
             android:text="low" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/submitBtn"
+        android:id="@+id/update_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -218,7 +223,7 @@
         android:text="Add task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/update_priority" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

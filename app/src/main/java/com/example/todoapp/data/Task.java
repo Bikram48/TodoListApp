@@ -22,8 +22,11 @@ public class Task implements Serializable {
     @ColumnInfo(name = "updated_date")
     private Date updatedDate;
     private int priority;
+    @Ignore
+    public Task(){
 
-
+    }
+    /*
     @Ignore
     public Task(Long id, String title, String category, Date createdDate, Date updatedDate, int priority) {
         this.id = id;
@@ -33,6 +36,8 @@ public class Task implements Serializable {
         this.updatedDate = updatedDate;
         this.priority = priority;
     }
+
+     */
 
     public Task(String title, String category, Date createdDate, Date updatedDate, int priority) {
         this.title = title;
