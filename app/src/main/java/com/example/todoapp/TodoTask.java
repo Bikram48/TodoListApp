@@ -34,7 +34,6 @@ public class TodoTask extends Fragment implements View.OnClickListener{
     private Button submitBtn;
     private Repository repository;
     int[] buttonIDs;
-    int year,day,month,mHour,mMinute;
     Calendar calendar;
     private Date date;
     View view;
@@ -64,26 +63,7 @@ public class TodoTask extends Fragment implements View.OnClickListener{
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                year=calendar.get(Calendar.YEAR);
-                month=calendar.get(Calendar.MONTH);
-                day=calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        //datePicker.setText(SimpleDateFormat.getDateInstance().format(calendar.getTime()));
-                        calendar.set(year,month,dayOfMonth);
-                        String datetxt= DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
-                        datePicker.setText(datetxt);
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                        String formatedDate = sdf.format(calendar.getTime());
-                        try {
-                            date=sdf.parse(formatedDate);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },year,month,day);
-                datePickerDialog.show();
+                pickDate();
             }
         });
         taskReminder=view.findViewById(R.id.task_reminder);
@@ -104,6 +84,22 @@ public class TodoTask extends Fragment implements View.OnClickListener{
         return view;
     }
 
+    void pickDate() {
+        Calendar calendar = Calendar.getInstance();
+        int cDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int cMonth = calendar.get(Calendar.MONTH);
+        int cYear = calendar.get(Calendar.YEAR);
+        DatePickerDialog datePickerDialog=new DatePickerDialog(this.getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                //datePicker.setText(SimpleDateFormat.getDateInstance().format(calendar.getTime()));
+                calendar.set(year,month,dayOfMonth);
+                datePicker.setText(year + "-" + month + "-" + dayOfMonth);
+            }
+        },cYear,cMonth,cDay);
+        datePickerDialog.show();
+    }
+
     @Override
     public void onClick(View v) {
         String task_title=titleEditText.getText().toString();
@@ -116,7 +112,15 @@ public class TodoTask extends Fragment implements View.OnClickListener{
         if(radioButton.getText().toString().equals("high"))
             priority=3;
 
-        Task task=new Task(task_title,categoryName,new Date(),new Date(),priority);
+        Date date=new Date();
+        try {
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            date = format.parse(datePicker.getText().toString());
+        }catch (ParseException ex){
+            ex.printStackTrace();
+        }
+
+        Task task=new Task(task_title,categoryName,date,null,priority);
         repository.addTask(task);
         Intent intent=new Intent(getContext(),MainActivity.class);
         startActivity(intent);

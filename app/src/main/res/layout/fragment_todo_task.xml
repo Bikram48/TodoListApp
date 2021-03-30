@@ -208,7 +208,7 @@
             android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/teal_200"
+            android:background="#3AFB02"
             android:text="low" />
     </RadioGroup>
 

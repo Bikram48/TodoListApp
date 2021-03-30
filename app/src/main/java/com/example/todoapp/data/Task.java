@@ -67,7 +67,7 @@ public class Task implements Serializable {
         return category;
     }
 
-    public void setCategory(String description) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
