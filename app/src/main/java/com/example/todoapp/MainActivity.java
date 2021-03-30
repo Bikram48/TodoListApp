@@ -25,41 +25,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClicked{
-
+public class MainActivity extends AppCompatActivity {
     public static String TAG = MainActivity.class.getSimpleName();
-
-    private RecyclerView recyclerView;
-
-    private Repository repository;
-    private List<Task> taskList;
-    private TaskAdapter adapter;
     private FloatingActionButton fab;
-    private MainViewModel viewModel;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        recyclerView = findViewById(R.id.recyclerView);
         fab = findViewById(R.id.addTaskBtn);
-        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        adapter = new TaskAdapter(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        repository = Repository.getRepository(this.getApplication());
-        viewModel.getAllTasks().observe(this, new Observer<List<Task>>() {
-            @Override
-            public void onChanged(List<Task> tasks) {
-                if(tasks != null){
-                    taskList=tasks;
-                    adapter.setData(tasks);
-                }
-
-            }
-        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +41,13 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
                 bottomSheet.show(getSupportFragmentManager(), BottomSheet.TAG);
             }
         });
-    }
 
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragment_container_view, HomeFragment.class, null)
+                .commit();
+    }
+    /*
     @Override
     public void onItemClicked(int index, String btnStatus) {
         if(btnStatus.equals("delete")){
@@ -82,4 +60,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
             startActivity(intent);
         }
     }
+
+     */
 }
+

@@ -14,7 +14,6 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.todoapp.Models.TodoModel;
 import com.example.todoapp.data.Repository;
 import com.example.todoapp.data.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -58,7 +57,7 @@ public class TodoTask extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_todo_task, container, false);
-        titleEditText=view.findViewById(R.id.title_txt);
+        titleEditText=view.findViewById(R.id.task_title);
         datePicker=view.findViewById(R.id.date_picker);
         radioGroup=view.findViewById(R.id.radioGroup);
         repository=Repository.getRepository(getActivity().getApplication());

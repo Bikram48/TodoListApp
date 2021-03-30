@@ -23,16 +23,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
 
     private List<Task> taskList;
-    Context context;
+    HomeFragment context;
     ItemClicked activity;
     public interface ItemClicked{
         void onItemClicked(int index,String btnStatus);
     }
     private final ViewBinderHelper viewBinderHelper=new ViewBinderHelper();
 
-    public TaskAdapter(Context context) {
+    public TaskAdapter(HomeFragment context) {
         this.context=context;
-        activity=(ItemClicked)context;
+       activity=(ItemClicked)context;
     }
 
     public void setData(List<Task> data){

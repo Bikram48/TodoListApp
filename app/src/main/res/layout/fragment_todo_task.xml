@@ -9,7 +9,7 @@
     tools:context=".TodoTask">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/title_txt"
+        android:id="@+id/task_title"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="15dp"
@@ -26,8 +26,8 @@
         android:layout_width="5dp"
         android:layout_height="30dp"
         android:background="#0f0"
-        app:layout_constraintStart_toStartOf="@+id/title_txt"
-        app:layout_constraintTop_toTopOf="@+id/title_txt" />
+        app:layout_constraintStart_toStartOf="@+id/task_title"
+        app:layout_constraintTop_toTopOf="@+id/task_title" />
 
     <TextView
         android:id="@+id/textView"
@@ -37,7 +37,7 @@
         android:layout_marginTop="40dp"
         android:text="Choose Category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/task_title" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
