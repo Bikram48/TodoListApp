@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="#0F0F1B"
-                android:text="Study"
+                android:text="study"
                 android:textColor="@color/black" />
 
             <Button
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="#0F0F1B"
-                android:text="Work"
+                android:text="work"
                 android:textColor="@color/black" />
 
             <Button
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="#0F0F1B"
-                android:text="Friends"
+                android:text="friends"
                 android:textColor="@color/black" />
 
             <Button
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="#0F0F1B"
-                android:text="Movies"
+                android:text="movies"
                 android:textColor="@color/black" />
 
             <Button
@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="#0F0F1B"
-                android:text="Coding"
+                android:text="coding"
                 android:textColor="@color/black" />
         </LinearLayout>
     </HorizontalScrollView>

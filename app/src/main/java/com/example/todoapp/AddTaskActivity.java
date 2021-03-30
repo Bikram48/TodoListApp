@@ -36,8 +36,6 @@ public class AddTaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String title = titleEditText.getText().toString();
                 String desc = descEditText.getText().toString();
-
-
                 finish();
             }
         });

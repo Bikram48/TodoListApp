@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ import com.example.todoapp.data.Task;
 import com.example.todoapp.data.TodoDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClicked{
@@ -71,10 +74,12 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
     public void onItemClicked(int index, String btnStatus) {
         if(btnStatus.equals("delete")){
             repository.delete(taskList.get(index));
-            Log.d(TAG, "delete: "+taskList.get(index).getTitle());
         }
         if(btnStatus.equals("edit")){
-            Log.d(TAG, "edit: "+taskList.get(index).getTitle());
+            Intent intent=new Intent(MainActivity.this,EditTaskActivity.class);
+            intent.putExtra("Arraylist", (Serializable) taskList);
+            intent.putExtra("position",index);
+            startActivity(intent);
         }
     }
 }
