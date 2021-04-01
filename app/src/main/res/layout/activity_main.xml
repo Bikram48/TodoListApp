@@ -18,6 +18,7 @@
         app:fabCradleVerticalOffset="10dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="20dp"
@@ -35,29 +36,11 @@
         android:src="@drawable/ic_baseline_add_24"
         app:layout_anchor="@id/bottom_bar"
         app:tint="@color/white" />
-    <!--
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_width="match_parent"
-        android:layout_height="617dp" />
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"/>
-        -->
-
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.example.todoapp.HomeFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="60dp"
-        tools:layout="@layout/fragment_home" />
-
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.todoapp.data.Repository;
@@ -36,21 +38,19 @@ import java.util.Date;
 import java.util.List;
 
 public class EditTaskActivity extends AppCompatActivity {
+    public static final int HIGH_PRIORITY = 3;
+    public static final int MEDIUM_PRIORITY = 2;
+    public static final int LOW_PRIORITY = 1;
     private TextInputLayout category_dropdown;
     private AutoCompleteTextView category_items;
     private TextInputEditText taskTitle;
     private Button datePicker;
+    private Button timePicker;
     private Button update_task_btn;
     private int priority;
     private RadioGroup update_priority;
-    private RadioButton radioButton;
     private Repository repository;
-    public static final int HIGH_PRIORITY = 3;
-    public static final int MEDIUM_PRIORITY = 2;
-    public static final int LOW_PRIORITY = 1;
     private String selected_category;
-    Date todoDate;
-    List<Task> taskList;
     Task task;
     ArrayList<String> categoryList;
     ArrayAdapter<String> adapterCategoryList;
@@ -66,6 +66,7 @@ public class EditTaskActivity extends AppCompatActivity {
         category_dropdown=findViewById(R.id.category_dropdown);
         category_items=findViewById(R.id.category_items);
         datePicker=findViewById(R.id.update_date_picker);
+        timePicker=findViewById(R.id.task_reminder);
         update_priority=findViewById(R.id.update_priority);
         categoryList=new ArrayList<>();
         taskTitle=findViewById(R.id.task_title);
@@ -93,7 +94,6 @@ public class EditTaskActivity extends AppCompatActivity {
         checkCategoryExistence(task.getCategory().toLowerCase());
         adapterCategoryList=new ArrayAdapter<>(getApplicationContext(),R.layout.dropdown_item,categoryList);
         category_items.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selected_category=adapterCategoryList.getItem(position).toString();
@@ -152,6 +152,12 @@ public class EditTaskActivity extends AppCompatActivity {
                 pickDate();
             }
         });
+        timePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickTime();
+            }
+        });
         switch (task.getPriority()){
             case 1:
                 update_priority.check(R.id.low_priority);
@@ -181,6 +187,20 @@ public class EditTaskActivity extends AppCompatActivity {
             }
         },cYear,cMonth,cDay);
         datePickerDialog.show();
+    }
+
+    void pickTime() {
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                String time = hourOfDay + ":" + minute;
+                timePicker.setText(time);
+            }
+        }, hour, minute, false);
+        timePickerDialog.show();
     }
 
     public static Intent getIntent(Context context,Task task){

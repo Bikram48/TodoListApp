@@ -30,7 +30,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.io.Serializable;
 import java.util.List;
-
 public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
     private static final int LENGTH_LONG = 10;
     private RecyclerView recyclerView;
@@ -74,7 +73,6 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
                     }
                 }
             });
-
         return view;
     }
 
