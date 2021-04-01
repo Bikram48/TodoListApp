@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/sortItem" android:title="Sort By">
+    <item
+        android:id="@+id/sortItem"
+        android:title="@string/sort_by_menu">
         <menu>
-            <item android:id="@+id/prioritySort" android:title="Priority">
-                <menu> <item android:id="@+id/sortbyhigh" android:title="High to low"/>
-               <item android:id="@+id/sortbylow" android:title="Low to high"/></menu>
+            <item
+                android:id="@+id/prioritySort"
+                android:title="@string/priority">
+                <menu>
+                    <item
+                        android:id="@+id/sortbyhigh"
+                        android:title="@string/high_to_low" />
+                    <item
+                        android:id="@+id/sortbylow"
+                        android:title="@string/low_to_high" />
+                </menu>
             </item>
-            <item android:id="@+id/sortbydate" android:title="Date"/>
+            <item
+                android:id="@+id/sortbydate"
+                android:title="@string/date" />
         </menu>
 
     </item>
-    <item android:id="@+id/deleteAll" android:title="Delete All">
-    </item>
+    <item
+        android:id="@+id/deleteAll"
+        android:title="@string/delete_all"></item>
 </menu>

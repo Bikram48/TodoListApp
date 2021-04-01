@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.todoapp.R;
 import com.example.todoapp.TodoTask;
 
 
@@ -34,7 +35,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         String title=null;
         if(position==0){
-            title="ADD TASK";
+            title= "ADD TASK";
         }
         return title;
     }

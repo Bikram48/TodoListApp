@@ -133,9 +133,8 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
                 sort=true;
                 break;
             case R.id.deleteAll:
-                Log.d("sort", "sorting");
                 AlertDialog.Builder mAlterDialog = new AlertDialog.Builder(getContext());
-                mAlterDialog.setMessage("Are you sure want to delete all??")
+                mAlterDialog.setMessage(getString(R.string.delete_message))
                         .setCancelable(false)
                         .setTitle(getString(R.string.app_name))
                         .setIcon(R.mipmap.ic_launcher);
@@ -162,8 +161,6 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
     public void onItemClicked(int index, String btnStatus) {
 
         task = undoList.get(index);
-
-        Log.d("TAG", "onItemClicked: "+task.getTitle());
         if(btnStatus.equals("delete")){
             repository.delete(taskList.get(index));
         }

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.todoapp">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,18 +11,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TodoApp">
-        <activity android:name=".EditTaskActivity"  android:parentActivityName=".MainActivity" android:label="UPDATE TASK" >
+        <activity
+            android:name=".EditTaskActivity"
+            android:label="UPDATE TASK"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=
-                    "com.example.todoapp.MainActivity" /></activity>
-        <activity android:name=".MainActivity" android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
+                android:value="com.example.todoapp.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver
+            android:name=".BootupReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".AlaramBroadcastReceiver" />
     </application>
 
 </manifest>

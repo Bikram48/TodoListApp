@@ -4,19 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/layoutbackground"
     android:orientation="vertical"
-    android:background="#F0F4FD"
     tools:context=".TodoTask">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/task_title"
+        style="@style/addtask_editText_style"
         android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="@null"
-        android:hint="Your Task Name"
-        android:paddingStart="20dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_task_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,8 +21,9 @@
     <View
         android:id="@+id/View04"
         android:layout_width="5dp"
-        android:layout_height="30dp"
-        android:background="#0f0"
+        android:layout_height="0dp"
+        android:background="@color/verticallinecolor"
+        app:layout_constraintBottom_toBottomOf="@+id/task_title"
         app:layout_constraintStart_toStartOf="@+id/task_title"
         app:layout_constraintTop_toTopOf="@+id/task_title" />
 
@@ -35,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="40dp"
-        android:text="Choose Category"
+        android:text="@string/choose_category"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_title" />
 
@@ -59,8 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:backgroundTint="#0F0F1B"
-                android:text="study"
+                android:backgroundTint="@color/btncategorycolor"
+                android:text="@string/study_category"
                 android:textColor="@color/black" />
 
             <Button
@@ -69,8 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:backgroundTint="#0F0F1B"
-                android:text="sport"
+                android:backgroundTint="@color/btncategorycolor"
+                android:text="@string/sport_category"
                 android:textColor="@color/black" />
 
             <Button
@@ -79,8 +77,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:backgroundTint="#0F0F1B"
-                android:text="work"
+                android:backgroundTint="@color/btncategorycolor"
+                android:text="@string/work_category"
                 android:textColor="@color/black" />
 
             <Button
@@ -89,8 +87,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:backgroundTint="#0F0F1B"
-                android:text="friends"
+                android:backgroundTint="@color/btncategorycolor"
+                android:text="@string/friends_category"
                 android:textColor="@color/black" />
 
             <Button
@@ -99,8 +97,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:backgroundTint="#0F0F1B"
-                android:text="movies"
+                android:backgroundTint="@color/btncategorycolor"
+                android:text="@string/movies_category"
                 android:textColor="@color/black" />
 
             <Button
@@ -109,8 +107,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:backgroundTint="#0F0F1B"
-                android:text="coding"
+                android:backgroundTint="@color/btncategorycolor"
+                android:text="@string/coding_category"
                 android:textColor="@color/black" />
         </LinearLayout>
     </HorizontalScrollView>
@@ -121,7 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="36dp"
-        android:text="Set Due Date"
+        android:text="@string/set_due_date"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.313"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,20 +130,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="68dp"
-        android:text="Set Reminder"
+        android:text="@string/set_reminder"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/update_date_picker"
+        style="@style/dateandreminderbtn_style"
         android:layout_width="204dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:drawableLeft="@drawable/calendar"
-        android:text="set date"
-        android:textColor="@color/black"
-        android:textSize="10sp"
-        app:backgroundTint="#FFFFFF"
+        android:layout_marginTop="@dimen/margintop"
+        android:drawableStart="@drawable/calendar"
+        android:text="@string/set_date"
+        app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/task_reminder"
         app:layout_constraintHorizontal_bias="0.0"
@@ -154,15 +151,14 @@
 
     <Button
         android:id="@+id/task_reminder"
+        style="@style/dateandreminderbtn_style"
         android:layout_width="204dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        android:drawableLeft="@drawable/reminder"
-        android:text="set reminder"
-        android:textColor="@color/black"
-        android:textSize="10sp"
-        app:backgroundTint="#FFFFFF"
+        android:layout_marginEnd="@dimen/marginend"
+        android:drawableStart="@drawable/reminder"
+        android:text="@string/set_reminder"
+        app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/update_date_picker"
@@ -174,7 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Set Priority"
+        android:text="@string/set_priority"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/update_date_picker" />
@@ -195,24 +191,24 @@
             android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FF0000"
-            android:text="high" />
+            android:background="@color/highprioritycolor"
+            android:text="@string/high_priority" />
 
         <RadioButton
             android:id="@+id/medium_priority"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#00A9FF"
-            android:text="medium" />
+            android:background="@color/mediumprioritycolor"
+            android:text="@string/medium_priority" />
 
         <RadioButton
             android:id="@+id/low_priority"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#3AFB02"
-            android:text="low" />
+            android:background="@color/lowprioritycolor"
+            android:text="@string/low_priority" />
     </RadioGroup>
 
     <Button
@@ -223,7 +219,7 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="15dp"
         android:background="@drawable/button_background"
-        android:text="Add task"
+        android:text="@string/add_task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/update_priority" />

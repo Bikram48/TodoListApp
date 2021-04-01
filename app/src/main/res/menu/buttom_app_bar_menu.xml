@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-    <item android:id="@+id/homeMenu"
-        android:title="@string/home_menu"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homeMenu"
         android:icon="@drawable/ic_baseline_home_24"
-        />
+        android:title="@string/home_menu" />
 
-    <item android:id="@+id/accountMenu"
-        android:title="@string/account_menu"
+    <item
+        android:id="@+id/accountMenu"
         android:icon="@drawable/ic_baseline_account_circle_24"
-        />
-    <item android:id="@+id/calendarMenu"
-        android:title="calendar"
+        android:title="@string/account_menu" />
+    <item
+        android:id="@+id/calendarMenu"
         android:icon="@drawable/calendar"
-        />
+        android:title="calendar" />
 
-    <item android:id="@+id/clockMenu"
-        android:title="@string/account_menu"
+    <item
+        android:id="@+id/clockMenu"
         android:icon="@drawable/clock"
-        />
+        android:title="@string/account_menu" />
 </menu>

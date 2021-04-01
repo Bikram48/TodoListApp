@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 bottomSheet.show(getSupportFragmentManager(), BottomSheet.TAG);
             }
         });
+
         repository=Repository.getRepository(getApplication());
     /*
         getSupportFragmentManager().beginTransaction()
@@ -57,53 +58,5 @@ public class MainActivity extends AppCompatActivity {
                 */
 
     }
-
-
-/*
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.sort:
-                break;
-            case R.id.deleteAll:
-                AlertDialog.Builder mAlterDialog = new AlertDialog.Builder(this);
-                mAlterDialog.setMessage("Are you sure want to delete all??")
-                        .setCancelable(false)
-                        .setTitle(getString(R.string.app_name))
-                        .setIcon(R.mipmap.ic_launcher);
-                mAlterDialog.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        repository.deleteAll();
-                    }
-                });
-                mAlterDialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                mAlterDialog.show();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-*/
-    /*
-    @Override
-    public void onItemClicked(int index, String btnStatus) {
-        if(btnStatus.equals("delete")){
-            repository.delete(taskList.get(index));
-        }
-        if(btnStatus.equals("edit")){
-            Intent intent=new Intent(MainActivity.this,EditTaskActivity.class);
-            intent.putExtra("Arraylist", (Serializable) taskList);
-            intent.putExtra("position",index);
-            startActivity(intent);
-        }
-    }
-
-     */
 }
 

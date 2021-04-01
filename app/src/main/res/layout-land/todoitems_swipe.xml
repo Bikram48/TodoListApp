@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:dragEdge="right"
     app:mode="same_level">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="90dp"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/txtEdit"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:background="#d2691e"
+            android:background="@color/deleteswipecolor"
             android:gravity="center"
-            android:text="EDIT"
-            android:textColor="#ffffff"/>
+            android:text="@string/edit"
+            android:textColor="#ffffff" />
+
         <TextView
             android:id="@+id/txtDelete"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:background="#d2691e"
-            android:gravity="center"
             android:layout_marginStart="10dp"
-            android:text="DELETE"
-            android:textColor="#ffffff"/>
+            android:background="@color/deleteswipecolor"
+            android:gravity="center"
+            android:text="@string/delete"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -47,7 +50,6 @@
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_background"
-                android:text="work"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +58,7 @@
                 android:id="@+id/priority_background"
                 android:layout_width="5dp"
                 android:layout_height="0dp"
-                android:background="#0f0"
+                android:background="@color/verticallinecolor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -67,7 +69,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Create wireframes wireframes"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +82,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="428dp"
-                android:text="12-06-2000"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@+id/category_btn"

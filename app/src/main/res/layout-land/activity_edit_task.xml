@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F0F4FD"
+        android:background="@color/layoutbackground"
         tools:context=".EditTaskActivity">
 
 
@@ -30,7 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="none"
-                android:text="No Category"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -43,12 +42,8 @@
             android:layout_marginStart="48dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="48dp"
-            android:background="@null"
-            android:hint="Your Task Name"
-            android:lines="5"
-            android:maxLines="5"
-            android:paddingStart="20dp"
-            android:textStyle="bold"
+            style="@style/addtask_editText_style"
+            android:hint="@string/add_task_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +53,7 @@
             android:id="@+id/View04"
             android:layout_width="5dp"
             android:layout_height="0dp"
-            android:background="#0f0"
+            android:background="@color/verticallinecolor"
             app:layout_constraintBottom_toBottomOf="@+id/task_title"
             app:layout_constraintStart_toStartOf="@+id/task_title"
             app:layout_constraintTop_toTopOf="@+id/task_title" />
@@ -71,7 +66,7 @@
             android:layout_marginStart="76dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="40dp"
-            android:text="Set Due Date"
+            android:text="@string/set_due_date"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/update_priority"
@@ -85,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Set Reminder"
+            android:text="@string/set_reminder"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/update_priority"
@@ -99,10 +94,10 @@
             android:layout_height="70dp"
             android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/calendar"
-            android:text="set date"
+            android:text="@string/set_date"
             android:textColor="@color/black"
             android:textSize="10sp"
-            app:backgroundTint="#FFFFFF"
+            app:backgroundTint="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -112,10 +107,10 @@
             android:layout_height="70dp"
             android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/reminder"
-            android:text="set reminder"
+            android:text="@string/set_reminder"
             android:textColor="@color/black"
             android:textSize="10sp"
-            app:backgroundTint="#FFFFFF"
+            app:backgroundTint="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -126,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="40dp"
-            android:text="Set Priority"
+            android:text="@string/set_priority"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
@@ -151,9 +146,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#FF0000"
-                android:paddingLeft="100dp"
-                android:text="high" />
+                android:background="@color/highprioritycolor"
+                android:paddingStart="100dp"
+                android:text="@string/high_priority"
+                tools:ignore="RtlSymmetry" />
 
             <RadioButton
                 android:id="@+id/medium_priority"
@@ -161,8 +157,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
-                android:background="#00A9FF"
-                android:text="medium" />
+                android:background="@color/mediumprioritycolor"
+                android:text="@string/medium_priority" />
 
             <RadioButton
                 android:id="@+id/low_priority"
@@ -170,8 +166,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
-                android:background="#3AFB02"
-                android:text="low" />
+                android:background="@color/lowprioritycolor"
+                android:text="@string/low_priority" />
         </RadioGroup>
 
         <Button
@@ -182,7 +178,7 @@
             android:layout_marginTop="44dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/button_background"
-            android:text="Update task"
+            android:text="@string/update_task"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintHorizontal_bias="0.5"
@@ -196,7 +192,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="40dp"
             android:background="@drawable/button_background"
-            android:text="Cancel"
+            android:text="@string/cancel_title"
             app:layout_constraintBaseline_toBaselineOf="@+id/update_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

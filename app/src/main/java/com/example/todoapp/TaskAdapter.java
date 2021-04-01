@@ -123,13 +123,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             }
             switch (task.getPriority()){
                 case 1:
-                    priority_background.setBackgroundColor(Color.parseColor("#3AFB02"));
+                    priority_background.setBackgroundColor(context.getResources().getColor(R.color.lowprioritycolor));
                     break;
                 case 2:
-                    priority_background.setBackgroundColor(Color.parseColor("#00A9FF"));
+                    priority_background.setBackgroundColor(context.getResources().getColor(R.color.mediumprioritycolor));
                     break;
                 case 3:
-                    priority_background.setBackgroundColor(Color.parseColor("#FF0000"));
+                    priority_background.setBackgroundColor(context.getResources().getColor(R.color.highprioritycolor));
                     break;
             }
         }

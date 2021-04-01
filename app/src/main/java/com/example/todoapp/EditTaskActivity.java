@@ -61,7 +61,7 @@ public class EditTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_task);
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable= new ColorDrawable(Color.parseColor("#6E7568"));
+        ColorDrawable colorDrawable= new ColorDrawable(Color.parseColor(getString(R.string.editactionbar_color)));
         actionBar.setBackgroundDrawable(colorDrawable);
         category_dropdown=findViewById(R.id.category_dropdown);
         category_items=findViewById(R.id.category_items);
@@ -81,12 +81,12 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     private void addCategory(){
-        categoryList.add("study");
-        categoryList.add("sport");
-        categoryList.add("work");
-        categoryList.add("friends");
-        categoryList.add("movies");
-        categoryList.add("coding");
+        categoryList.add(getString(R.string.study_category));
+        categoryList.add(getString(R.string.sport_category));
+        categoryList.add(getString(R.string.work_category));
+        categoryList.add(getString(R.string.friends_category));
+        categoryList.add(getString(R.string.movies_category));
+        categoryList.add(getString(R.string.coding_category));
         Intent intent=getIntent();
         task= (Task) intent.getSerializableExtra(HomeFragment.intent_data);
         position=intent.getIntExtra("position",0);

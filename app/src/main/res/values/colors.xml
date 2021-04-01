@@ -8,4 +8,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="tabcolor">#F0F4FD</color>
+    <color name="lowprioritycolor">#3AFB02</color>
+    <color name="mediumprioritycolor">#00A9FF</color>
+    <color name="highprioritycolor">#FF0000</color>
+    <color name="verticallinecolor">#0f0</color>
+    <color name="layoutbackground">#F0F4FD</color>
+    <color name="mainactivitybg">#F7F6F1</color>
+    <color name="fb_color">#161623</color>
+    <color name="tabindicatorcolor">#D5D5E4</color>
+    <color name="btncategorycolor">#0F0F1B</color>
+    <color name="deleteswipecolor">#d2691e</color>
+    <color name="text">#c2bcbc</color>
+    <color name="buttonbg">#A8EB12</color>
 </resources>

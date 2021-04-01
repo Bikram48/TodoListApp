@@ -1,43 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F0F4FD"
+    android:background="@color/layoutbackground"
     android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabBackground="@color/tabcolor"
-        app:tabIndicatorColor="#D5D5E4"
-        app:tabTextColor="#6B6B78"
-        app:tabTextAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="20dp"
         android:background="@color/tabcolor"
-        android:layout_marginTop="20dp">
+        app:tabBackground="@color/tabcolor"
+        app:tabIndicatorColor="@color/tabindicatorcolor"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:tabTextColor="#6B6B78">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Todo" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reminder" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Icons" />
+            android:text="@string/todo" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp" />
 
 </LinearLayout>

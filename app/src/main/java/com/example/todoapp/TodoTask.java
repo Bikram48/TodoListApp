@@ -1,7 +1,10 @@
 package com.example.todoapp;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -118,7 +121,7 @@ public class TodoTask extends Fragment implements View.OnClickListener{
                 if(month>0)
                     month=month+1;
                 calendar.set(year,month,dayOfMonth);
-                datePicker.setText(year + "-" + month + "-" + dayOfMonth);
+                datePicker.setText(dayOfMonth + "-" + month + "-" + year);
             }
         },cYear,cMonth,cDay);
         datePickerDialog.show();
@@ -129,11 +132,11 @@ public class TodoTask extends Fragment implements View.OnClickListener{
         String task_title=titleEditText.getText().toString();
         int selectedId = radioGroup.getCheckedRadioButtonId();
         radioButton = (RadioButton) view.findViewById(selectedId);
-        if(radioButton.getText().toString().equals("low"))
+        if(radioButton.getText().toString().equals(getString(R.string.low_priority)))
             priority=1;
-        if(radioButton.getText().toString().equals("medium"))
+        if(radioButton.getText().toString().equals(getString(R.string.medium_priority)))
             priority=2;
-        if(radioButton.getText().toString().equals("high"))
+        if(radioButton.getText().toString().equals(getString(R.string.high_priority)))
             priority=3;
 
         Date date=new Date();
@@ -146,8 +149,59 @@ public class TodoTask extends Fragment implements View.OnClickListener{
 
         Task task=new Task(task_title,categoryName,date,null,time,priority);
         repository.addTask(task);
+        if(task.getTaskReminder()!=null){
+           String datefor_reminder=datePicker.getText().toString();
+           String time=task.getTaskReminder();
+           String title=task.getTitle();
+           setAlaram(title,datefor_reminder,time);
+        }
         Intent intent=new Intent(getContext(),MainActivity.class);
         startActivity(intent);
+
     }
+
+    public void setAlaram(String task,String date,String time){
+        AlarmManager alarmManager=(AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        Intent intent=new Intent(getActivity().getApplicationContext(),AlaramBroadcastReceiver.class);
+        intent.putExtra("task_name",task);
+        intent.putExtra("time",time);
+        intent.putExtra("data",date);
+        PendingIntent pendingIntent=PendingIntent.getBroadcast(getActivity().getApplicationContext(),0,intent,0);
+        String dateandtime=date+" "+time;
+        DateFormat formatter=new SimpleDateFormat("d-M-yyyy hh:mm");
+        try {
+            Date date1=formatter.parse(dateandtime);
+            alarmManager.set(AlarmManager.RTC_WAKEUP,date1.getTime(),pendingIntent);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String FormatTime(int hour, int minute) {
+
+        String time;
+        time = "";
+        String formattedMinute;
+
+        if (minute / 10 == 0) {
+            formattedMinute = "0" + minute;
+        } else {
+            formattedMinute = "" + minute;
+        }
+
+
+        if (hour == 0) {
+            time = "12" + ":" + formattedMinute + " AM";
+        } else if (hour < 12) {
+            time = hour + ":" + formattedMinute + " AM";
+        } else if (hour == 12) {
+            time = "12" + ":" + formattedMinute + " PM";
+        } else {
+            int temp = hour - 12;
+            time = temp + ":" + formattedMinute + " PM";
+        }
+        return time;
+    }
+
 
 }
