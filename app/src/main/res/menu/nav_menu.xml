@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/sort" android:title="Sort By Priority"/>
-    <item android:id="@+id/deleteAll" android:title="Delete All"/>
+    <item android:id="@+id/sortItem" android:title="Sort By">
+        <menu>
+            <item android:id="@+id/prioritySort" android:title="Priority">
+                <menu> <item android:id="@+id/sortbyhigh" android:title="High to low"/>
+               <item android:id="@+id/sortbylow" android:title="Low to high"/></menu>
+            </item>
+            <item android:id="@+id/sortbydate" android:title="Date"/>
+        </menu>
+
+    </item>
+    <item android:id="@+id/deleteAll" android:title="Delete All">
+    </item>
 </menu>

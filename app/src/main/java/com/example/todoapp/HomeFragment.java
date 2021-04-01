@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
     private MainViewModel viewModel;
     public static final String intent_data="com.example.todoapp.task";
     private boolean sort;
+    private Task task;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -49,6 +50,7 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(HomeFragment.this).get(MainViewModel.class);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -61,43 +63,77 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         repository = Repository.getRepository(getActivity().getApplication());
-        if(sort){
+
             viewModel.getAllTasks().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
                 @Override
                 public void onChanged(List<Task> tasks) {
-                    if(tasks != null){
-                        taskList=tasks;
-                        undoList=tasks;
+                    if (tasks != null) {
+                        taskList = tasks;
+                        undoList = tasks;
                         adapter.setData(tasks);
                     }
                 }
             });
-        }
-        viewModel.getAllTasks().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
-            @Override
-            public void onChanged(List<Task> tasks) {
-                if(tasks != null){
-                    taskList=tasks;
-                    undoList=tasks;
-                    adapter.setData(tasks);
-                }
-            }
-        });
+
         return view;
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.nav_menu,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.sort:
+            case R.id.sortbyhigh:
+                taskList.clear();
+                undoList.clear();
+                viewModel.getPriorityByHigh().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
+                    @Override
+                    public void onChanged(List<Task> tasks) {
+                        if(tasks != null){
+                            taskList=tasks;
+                            undoList=tasks;
+                            adapter.setData(tasks);
+                        }
+                    }
+                });
+                sort=true;
+                break;
+            case R.id.sortbylow:
+                taskList.clear();
+                undoList.clear();
+                viewModel.getPriorityByLow().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
+                    @Override
+                    public void onChanged(List<Task> tasks) {
+                        if(tasks != null){
+                            taskList=tasks;
+                            undoList=tasks;
+                            adapter.setData(tasks);
+                        }
+                    }
+                });
+                sort=true;
+                break;
+            case R.id.sortbydate:
+                taskList.clear();
+                undoList.clear();
+                viewModel.getTaskByDate().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
+                    @Override
+                    public void onChanged(List<Task> tasks) {
+                        if(tasks != null){
+                            taskList=tasks;
+                            undoList=tasks;
+                            adapter.setData(tasks);
+                        }
+                    }
+                });
                 sort=true;
                 break;
             case R.id.deleteAll:
+                Log.d("sort", "sorting");
                 AlertDialog.Builder mAlterDialog = new AlertDialog.Builder(getContext());
                 mAlterDialog.setMessage("Are you sure want to delete all??")
                         .setCancelable(false)
@@ -124,7 +160,10 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
 
     @Override
     public void onItemClicked(int index, String btnStatus) {
-        Task task=undoList.get(index);
+
+        task = undoList.get(index);
+
+        Log.d("TAG", "onItemClicked: "+task.getTitle());
         if(btnStatus.equals("delete")){
             repository.delete(taskList.get(index));
         }
@@ -148,7 +187,7 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
                                 @Override
                                 public void onClick(View v) {
                                     taskList.add(task);
-                                    adapter.notifyItemInserted(index);
+                                    adapter.notifyDataSetChanged();
                                 }
                             }
                         )

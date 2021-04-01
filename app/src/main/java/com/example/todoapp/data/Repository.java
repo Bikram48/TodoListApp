@@ -27,7 +27,15 @@ public class Repository {
     public LiveData<List<Task>> getAllTasks(){
         return dao.getAllTasks();
     }
-
+    public LiveData<List<Task>> getPriorityByHigh(){
+        return dao.getPriorityByHigh();
+    }
+    public LiveData<List<Task>> getPriorityByLow(){
+        return dao.getPriorityByLow();
+    }
+    public LiveData<List<Task>> getTaskByDate(){
+        return dao.getTaskByDate();
+    }
     public void deleteAll(){
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override

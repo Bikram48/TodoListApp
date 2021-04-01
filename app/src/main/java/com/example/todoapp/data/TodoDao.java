@@ -16,7 +16,11 @@ public interface TodoDao {
     @Query("select * from todos")
     LiveData<List<Task>> getAllTasks();
     @Query("select * from todos order by priority desc")
-    LiveData<List<Task>> getSortedTasks();
+    LiveData<List<Task>> getPriorityByHigh();
+    @Query("select * from todos order by priority")
+    LiveData<List<Task>> getPriorityByLow();
+    @Query("select * from todos order by created_date")
+    LiveData<List<Task>> getTaskByDate();
     @Delete
     void delete(Task task);
 
