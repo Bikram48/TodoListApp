@@ -14,8 +14,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=
                     "com.example.todoapp.MainActivity" /></activity>
-        <activity android:name=".AddTaskActivity" />
-        <activity android:name=".MainActivity" android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <activity android:name=".MainActivity" android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

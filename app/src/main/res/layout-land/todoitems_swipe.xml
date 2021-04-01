@@ -3,11 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:dragEdge="right"
     app:mode="same_level">
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="90dp"
@@ -30,6 +29,7 @@
             android:text="DELETE"
             android:textColor="#ffffff"/>
     </LinearLayout>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,8 +37,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
             android:orientation="vertical">
 
             <com.google.android.material.button.MaterialButton
@@ -82,9 +80,9 @@
                 android:id="@+id/date_shower"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="108dp"
-                android:textStyle="bold"
+                android:layout_marginStart="428dp"
                 android:text="12-06-2000"
+                android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@+id/category_btn"
                 app:layout_constraintStart_toEndOf="@+id/category_btn" />
 
@@ -92,12 +90,15 @@
                 android:id="@+id/task_complete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="224dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.998"
                 app:layout_constraintStart_toEndOf="@+id/category_btn"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.542" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+
 </com.chauthai.swipereveallayout.SwipeRevealLayout>

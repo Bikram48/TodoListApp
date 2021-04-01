@@ -117,6 +117,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             categoryBtn.setText(task.getCategory());
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             dateShower.setText(format.format(task.getCreatedDate()));
+           // dateShower.setText(task.getTaskReminder());
             if(task.getUpdatedDate()!=null){
                 dateShower.setText(format.format(task.getUpdatedDate()));
             }

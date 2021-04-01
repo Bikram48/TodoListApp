@@ -11,7 +11,6 @@ import java.util.Date;
 
 @Entity(tableName = "todos")
 public class Task implements Serializable {
-
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private Long id;
@@ -19,6 +18,7 @@ public class Task implements Serializable {
     private String category;
     @ColumnInfo(name = "created_date")
     private Date createdDate;
+    private String taskReminder;
     @ColumnInfo(name = "updated_date")
     private Date updatedDate;
     private int priority;
@@ -26,24 +26,27 @@ public class Task implements Serializable {
     public Task(){
 
     }
-    /*
+/*
     @Ignore
-    public Task(Long id, String title, String category, Date createdDate, Date updatedDate, int priority) {
+    public Task(Long id, String title, String category, Date createdDate, Date updatedDate,String taskReminder, int priority) {
         this.id = id;
         this.title = title;
         this.category = category;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
+        this.taskReminder=taskReminder;
         this.priority = priority;
     }
+*/
 
-     */
 
-    public Task(String title, String category, Date createdDate, Date updatedDate, int priority) {
+
+    public Task(String title, String category, Date createdDate, Date updatedDate, String taskReminder, int priority) {
         this.title = title;
         this.category = category;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
+        this.taskReminder=taskReminder;
         this.priority = priority;
     }
 
@@ -94,4 +97,11 @@ public class Task implements Serializable {
     public void setPriority(int priority) {
         this.priority = priority;
     }
+    public String getTaskReminder() {
+        return taskReminder;
+    }
+    public void setTaskReminder(String taskReminder) {
+        this.taskReminder = taskReminder;
+    }
+
 }

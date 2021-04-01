@@ -13,9 +13,10 @@ import java.util.List;
 @Dao
 public interface TodoDao {
 
-    @Query("select * from todos order by priority")
+    @Query("select * from todos")
     LiveData<List<Task>> getAllTasks();
-
+    @Query("select * from todos order by priority desc")
+    LiveData<List<Task>> getSortedTasks();
     @Delete
     void delete(Task task);
 
@@ -27,6 +28,5 @@ public interface TodoDao {
 
     @Query("delete from todos")
     void deleteAll();
-
 
 }

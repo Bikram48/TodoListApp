@@ -1,8 +1,10 @@
 package com.example.todoapp;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -32,9 +36,9 @@ public class TodoTask extends Fragment implements View.OnClickListener{
     private Button taskReminder;
     private RadioButton radioButton;
     private Button submitBtn;
+    private String time;
     private Repository repository;
     int[] buttonIDs;
-    Calendar calendar;
     private Date date;
     View view;
     private String categoryName;
@@ -46,7 +50,7 @@ public class TodoTask extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        calendar=Calendar.getInstance();
+
         category=new Button[6];
         buttonIDs = new int[] {R.id.button1,R.id.button2,R.id.button3,R.id.button4,R.id.button5,R.id.button6};
 
@@ -67,6 +71,12 @@ public class TodoTask extends Fragment implements View.OnClickListener{
             }
         });
         taskReminder=view.findViewById(R.id.task_reminder);
+        taskReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickTime();
+            }
+        });
         submitBtn=view.findViewById(R.id.update_btn);
         for(int i=0;i<category.length;i++){
             category[i]=view.findViewById(buttonIDs[i]);
@@ -83,7 +93,19 @@ public class TodoTask extends Fragment implements View.OnClickListener{
         submitBtn.setOnClickListener(this::onClick);
         return view;
     }
-
+    void pickTime(){
+        Calendar calendar = Calendar.getInstance();
+        int hour=calendar.get(Calendar.HOUR_OF_DAY);
+        int minute=calendar.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog=new TimePickerDialog(this.getContext(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                time=hourOfDay+":"+minute;
+                taskReminder.setText(time);
+            }
+        },hour,minute,false);
+        timePickerDialog.show();
+    }
     void pickDate() {
         Calendar calendar = Calendar.getInstance();
         int cDay = calendar.get(Calendar.DAY_OF_MONTH);
@@ -93,6 +115,8 @@ public class TodoTask extends Fragment implements View.OnClickListener{
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 //datePicker.setText(SimpleDateFormat.getDateInstance().format(calendar.getTime()));
+                if(month>0)
+                    month=month+1;
                 calendar.set(year,month,dayOfMonth);
                 datePicker.setText(year + "-" + month + "-" + dayOfMonth);
             }
@@ -120,7 +144,7 @@ public class TodoTask extends Fragment implements View.OnClickListener{
             ex.printStackTrace();
         }
 
-        Task task=new Task(task_title,categoryName,date,null,priority);
+        Task task=new Task(task_title,categoryName,date,null,time,priority);
         repository.addTask(task);
         Intent intent=new Intent(getContext(),MainActivity.class);
         startActivity(intent);

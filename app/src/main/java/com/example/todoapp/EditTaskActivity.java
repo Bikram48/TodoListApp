@@ -173,6 +173,9 @@ public class EditTaskActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 //datePicker.setText(SimpleDateFormat.getDateInstance().format(calendar.getTime()));
+                if(month>0){
+                    month=month+1;
+                }
                 calendar.set(year,month,dayOfMonth);
                 datePicker.setText(year + "-" + month + "-" + dayOfMonth);
             }

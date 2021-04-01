@@ -4,4 +4,6 @@
     <string name="home_menu">Home</string>
     <string name="account_menu">Account</string>
     <string name="addtask_menu">Add</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
 </resources>
