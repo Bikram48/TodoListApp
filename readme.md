@@ -3,16 +3,16 @@ Developed by: Bikram Chand (77202514)
 Git Link for application source code: 
 
 <h3>User Guidelines</h3>
-Hamro To-Do has several features which will be useful for you to manage your tasks. Some of the features of the app along with its tutorial has been discussed below:
+Hamro To-Do has several features which will be useful for you to manage your tasks. Some of the features of the app along with its tutorial has been discussed below:<br>
 Home Page
 <ul>
   <li>This page will display all the task you have added in the application</li>
   <li>You can find the menu at the top right-hand corner for additional features of the application</li>
+ <li>The navigation menu at the bottom of the page will help you to choose homepage, abount application.</li>
 </ul>
- The navigation menu at the bottom of the page will help you to choose homepage, abount application.
-How to add a task?
 
-  Press on the + button at the bottom of the homepage
+How to add a task?
+  - Press on the + button at the bottom of the homepage
   - You will be redirected to the form page where you are supposed to add all the details about the task.
   - You will face error if you don’t enter all the details correctly.
 - How to edit a task?
