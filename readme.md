@@ -1,3 +1,4 @@
+<h3>About App</h3>
 Hamro to-do is a todo list application which will help you to organize your task for increasing productivity. The app has minimal layout thus it is easy to use. We hope you will use the app to the fullest.<br> 
 Thank You for using the application. <br>
 Regards.<br>
