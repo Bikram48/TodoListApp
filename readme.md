@@ -8,8 +8,8 @@ Home Page
   - This page will display all the task you have added in the application
   - You can find the menu at the top right-hand corner for additional features of the application
  The navigation menu at the bottom of the page will help you to choose homepage, abount application.
-- How to add a task?
-  - Press on the + button at the bottom of the homepage
+How to add a task?
+  Press on the + button at the bottom of the homepage
   - You will be redirected to the form page where you are supposed to add all the details about the task.
   - You will face error if you don’t enter all the details correctly.
 - How to edit a task?
