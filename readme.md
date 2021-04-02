@@ -14,7 +14,8 @@ Hamro To-Do has several features which will be useful for you to manage your tas
  <li>The navigation menu at the bottom of the page will help you to choose homepage, abount application.</li>
 </ul>
 
-<h6>How to add a task?</h6>
+<h6>How to add a task?</h6> 
+
   - Press on the + button at the bottom of the homepage
   - You will be redirected to the form page where you are supposed to add all the details about the task.
   - You will face error if you don’t enter all the details correctly.<br>
