@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment=new HomeFragment();
                 break;
             case R.id.calendarMenu:
-                fragment=new TaskSchedule();
+                fragment=new AboutApplication();
                 break;
         }
         return loadFragment(fragment);

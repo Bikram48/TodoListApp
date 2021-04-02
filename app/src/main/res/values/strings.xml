@@ -43,4 +43,62 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_cancel_promt">Are you sure?</string>
+
+    <string name="aboutApplication"> <![CDATA[
+Hamro to-do is a todo list application which will help you to organize your task for increasing productivity. The app has minimal layout thus it is easy to use. We hope you will use the app to the fullest. Thank You for using the application. Regards.
+Developed by: Bikram Chand (77202514)
+Git Link for application source code:<br></br>
+
+        <h1>User Guidelines</h1>
+        Hamro To-Do has several features which will be useful for you to manage your tasks. Some of the features of the app along with its tutorial has been discussed below:
+        <h2>Home Page</h2>
+        <ol>
+        <li>This page will display all the task you have added in the application</li>
+<li>	You can find the menu at the top right-hand corner for additional features of the application<br></br>
+<li>	The navigation menu at the bottom of the page will help you to choose homepage, calendar, etc.<br></br>
+</ol>
+<h4>How to add a task?</h4>
+<ol>
+<li>	Press on the + button at the bottom of the homepage<br></br>
+<li>	You will be redirected to the form page where you are supposed to add all the details about the task.<br></br>
+<li>	You will face error if you don’t enter all the details correctly.<br></br>
+</ol>
+<h4>How to edit a task?</h4>
+<ol>
+<li>	Press on the desired task and swipe towards left<br></br>
+<li>	Choose the edit option beside the swiped area.<br></br>
+<li>	You will be redirected to the form page where your task details will be pre-populated.<br></br>
+<li>	Make the desired changes on the task<br></br>
+<li>	Click on the save button to update button to successfully edit the task<br></br>
+<li>	To cancel the edit, you may press the cancel button.
+</ol>
+<h4>How to delete a task?</h4>
+<ol>
+<li>	Press on the desired task and swipe towards left<br></br>
+<li>	Choose the delete option beside the swiped area to delete the task.<br></br>
+</ol>
+<h4>How to delete all tasks?</h4>
+<ol>
+<li>	Press on the menu at the top right-hand corner of the application<br></br>
+<li>	Choose the option Delete All to successfully delete all the tasks in the application<br></br>
+</ol>
+<h4>How to sort the tasks?</h4>
+<ol>
+<li>	Press on the menu at the top right-hand corner of the application<br></br>
+<li>	Choose the option: Sort by and choose the desired sorting option.<br></br>
+</ol>
+<h4>How to complete the task?</h4>
+<ol>
+<li>	Press on the radio button beside the task title.<br></br>
+<li>	To undo the operation, click on the undo option which will be available only for some time after you click on the radio button.<br></br>
+</ol>
+<h4>How to set the reminder?</h4>
+<ol>
+<li>	Click the set reminder button from the add task form.<br></br>
+<li>	Choose the desired time on the timepicker to set the reminder.<br></br>
+</ol><br><br>
+<h2 style=text-align:center;margin-top:70px;>Thank You for using the application!</h2>
+
+]]>
+    </string>
 </resources>

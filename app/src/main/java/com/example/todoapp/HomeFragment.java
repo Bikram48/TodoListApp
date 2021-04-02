@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = ViewModelProviders.of(HomeFragment.this).get(MainViewModel.class);
+        viewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
         setHasOptionsMenu(true);
     }
 
