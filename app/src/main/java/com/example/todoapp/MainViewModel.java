@@ -7,8 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.todoapp.data.Repository;
-import com.example.todoapp.data.Task;
-import com.example.todoapp.data.TodoDao;
+import com.example.todoapp.Models.Task;
 
 import java.util.List;
 

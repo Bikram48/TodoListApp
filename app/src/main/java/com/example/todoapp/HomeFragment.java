@@ -1,17 +1,14 @@
 package com.example.todoapp;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,12 +20,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todoapp.data.Repository;
-import com.example.todoapp.data.Task;
+import com.example.todoapp.Models.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.io.Serializable;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -164,7 +160,24 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
 
         task = undoList.get(index);
         if(btnStatus.equals("delete")){
-            repository.delete(taskList.get(index));
+            AlertDialog.Builder mAlterDialog = new AlertDialog.Builder(getContext());
+            mAlterDialog.setMessage(getString(R.string.deletetaskmessage))
+                    .setCancelable(false)
+                    .setTitle(getString(R.string.app_name))
+                    .setIcon(R.drawable.delete_forever);
+            mAlterDialog.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    repository.delete(taskList.get(index));
+                }
+            });
+            mAlterDialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            mAlterDialog.show();
         }
         if(btnStatus.equals("edit")){
             Intent intent=EditTaskActivity.getIntent(getContext(),taskList.get(index));

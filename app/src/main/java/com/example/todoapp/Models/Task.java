@@ -1,4 +1,4 @@
-package com.example.todoapp.data;
+package com.example.todoapp.Models;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -26,20 +26,6 @@ public class Task implements Serializable {
     public Task(){
 
     }
-/*
-    @Ignore
-    public Task(Long id, String title, String category, Date createdDate, Date updatedDate,String taskReminder, int priority) {
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
-        this.taskReminder=taskReminder;
-        this.priority = priority;
-    }
-*/
-
-
 
     public Task(String title, String category, Date createdDate, Date updatedDate, String taskReminder, int priority) {
         this.title = title;

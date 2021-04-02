@@ -10,7 +10,8 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.util.Date;
+import com.example.todoapp.Models.Task;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

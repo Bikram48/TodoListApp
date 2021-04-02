@@ -1,23 +1,18 @@
 package com.example.todoapp;
 
-import android.content.Context;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
-import com.example.todoapp.Models.TodoModel;
-import com.example.todoapp.data.Task;
+import com.example.todoapp.Models.Task;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

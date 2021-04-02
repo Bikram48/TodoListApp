@@ -8,6 +8,8 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.todoapp.Models.Task;
+
 import java.util.List;
 
 @Dao

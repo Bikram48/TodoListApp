@@ -5,20 +5,11 @@
         android:id="@+id/homeMenu"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/home_menu" />
-    <!--
-    <item
-        android:id="@+id/accountMenu"
-        android:icon="@drawable/ic_baseline_account_circle_24"
-        android:title="@string/account_menu" />
-           <item
-        android:id="@+id/clockMenu"
-        android:icon="@drawable/clock"
-        android:title="@string/account_menu" />
-        -->
+
     <item
         android:id="@+id/calendarMenu"
-        android:icon="@drawable/calendar"
-        android:title="calendar" />
+        android:icon="@drawable/about"
+        android:title="About App" />
 
 
 </menu>
