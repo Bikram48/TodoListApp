@@ -1,5 +1,7 @@
-Hamro to-do is a todo list application which will help you to organize your task for increasing productivity. The app has minimal layout thus it is easy to use. We hope you will use the app to the fullest. Thank You for using the application. Regards.
-Developed by: Bikram Chand (77202514)
+Hamro to-do is a todo list application which will help you to organize your task for increasing productivity. The app has minimal layout thus it is easy to use. We hope you will use the app to the fullest.<br> 
+Thank You for using the application. <br>
+Regards.<br>
+Developed by: Bikram Chand (77202514)<br>
 Git Link for application source code: 
 
 <h3>User Guidelines</h3>
