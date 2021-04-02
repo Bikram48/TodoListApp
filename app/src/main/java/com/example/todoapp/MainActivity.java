@@ -15,13 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.todoapp.data.AppDatabase;
 import com.example.todoapp.data.Repository;
@@ -40,10 +44,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private FloatingActionButton fab;
     private BottomNavigationView bottomNavigationView;
     FragmentManager fragmentManager;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>HAMRO TO-DO</font>"));
         fab = findViewById(R.id.addTaskBtn);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

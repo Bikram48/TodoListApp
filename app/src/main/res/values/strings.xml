@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TodoApp</string>
+    <string name="app_name">HAMRO TO-DO</string>
     <string name="to_do_list_header">To do list</string>
     <string name="home_menu">Home</string>
     <string name="account_menu">Account</string>

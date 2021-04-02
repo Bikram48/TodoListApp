@@ -63,10 +63,6 @@ public class EditTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable= new ColorDrawable(Color.parseColor(getString(R.string.editactionbar_color)));
-        actionBar.setBackgroundDrawable(colorDrawable);
         category_dropdown=findViewById(R.id.category_dropdown);
         category_items=findViewById(R.id.category_items);
         datePicker=findViewById(R.id.update_date_picker);
