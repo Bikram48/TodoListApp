@@ -21,6 +21,7 @@ Hamro To-Do has several features which will be useful for you to manage your tas
   - You will face error if you don’t enter all the details correctly.<br>
   
 <h6>How to edit a task?</h6>
+
   - Press on the desired task and swipe towards left
   - Choose the edit option beside the swiped area.
   - You will be redirected to the form page where your task details will be pre-populated.
@@ -29,21 +30,27 @@ Hamro To-Do has several features which will be useful for you to manage your tas
   - To cancel the edit, you may press the cancel button.
   
 <h6>How to delete a task?</h6>
+
   - Press on the desired task and swipe towards left
   - Choose the delete option beside the swiped area to delete the task.
+  
 <h6>How to delete all tasks?</h6>
+
   -Press on the menu at the top right-hand corner of the application
   - Choose the option Delete All to successfully delete all the tasks in the application
   
 <h6>How to sort the tasks?</h6>
+
   - Press on the menu at the top right-hand corner of the application
   - Choose the option: Sort by and choose the desired sorting option.
   
 <h6>How to complete the task?</h6>
+
   - Press on the radio button beside the task title.
   - To undo the operation, click on the undo option which will be available only for some time after you click on the radio button.
   
 <h6>How to set the reminder?</h6>
+
   - Click the set reminder button from the add task form.
   - Choose the desired time on the timepicker to set the reminder.
 
