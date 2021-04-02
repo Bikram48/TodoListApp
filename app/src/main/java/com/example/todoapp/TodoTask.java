@@ -19,10 +19,12 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.todoapp.data.Repository;
 import com.example.todoapp.data.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
@@ -31,7 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class TodoTask extends Fragment implements View.OnClickListener {
+public class TodoTask extends Fragment{
     private TextInputEditText titleEditText;
     private RadioGroup radioGroup;
     private Button[] category;
@@ -41,23 +43,21 @@ public class TodoTask extends Fragment implements View.OnClickListener {
     private Button submitBtn;
     private String time;
     private Repository repository;
-    int[] buttonIDs;
     private Date date;
-    View view;
+    private View view;
     private String categoryName;
     private int priority;
-
+    private CoordinatorLayout layout;
+    int[] buttonIDs;
+    boolean buttonSelected;
     public TodoTask() {
-        // Required empty public constructor
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         category = new Button[6];
         buttonIDs = new int[]{R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6};
-
     }
 
     @Override
@@ -67,6 +67,7 @@ public class TodoTask extends Fragment implements View.OnClickListener {
         titleEditText = view.findViewById(R.id.task_title);
         datePicker = view.findViewById(R.id.update_date_picker);
         radioGroup = view.findViewById(R.id.update_priority);
+        layout=view.findViewById(R.id.addFragment);
         repository = Repository.getRepository(getActivity().getApplication());
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,11 +91,17 @@ public class TodoTask extends Fragment implements View.OnClickListener {
                 @Override
                 public void onClick(View v) {
                     categoryName = button.getText().toString();
+                    buttonSelected=true;
                 }
             });
         }
 
-        submitBtn.setOnClickListener(this::onClick);
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveData();
+            }
+        });
         return view;
     }
 
@@ -130,37 +137,63 @@ public class TodoTask extends Fragment implements View.OnClickListener {
         datePickerDialog.show();
     }
 
-    @Override
-    public void onClick(View v) {
-        String task_title = titleEditText.getText().toString();
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-        radioButton = (RadioButton) view.findViewById(selectedId);
-        if (radioButton.getText().toString().equals(getString(R.string.low_priority)))
-            priority = 1;
-        if (radioButton.getText().toString().equals(getString(R.string.medium_priority)))
-            priority = 2;
-        if (radioButton.getText().toString().equals(getString(R.string.high_priority)))
-            priority = 3;
+    public void saveData(){
+       if(titleEditText.getText().toString().equals("")){
+           Snackbar snackBar = Snackbar.make(layout,
+                   "Please input task!!", Snackbar.LENGTH_LONG);
+           snackBar.show();
+       }
+       else if(radioGroup.getCheckedRadioButtonId()==-1){
+           Snackbar snackBar = Snackbar.make(layout,
+                   "Please set the priority!!", Snackbar.LENGTH_LONG);
+           snackBar.show();
+       }
+       else if(datePicker.getText().toString().isEmpty()){
+           Snackbar snackBar = Snackbar.make(layout,
+                   "Please pick the date!!", Snackbar.LENGTH_LONG);
+           snackBar.show();
+       }
+       else if(taskReminder.getText().toString().isEmpty()){
+           Snackbar snackBar = Snackbar.make(layout,
+                   "Please set the task reminder!!", Snackbar.LENGTH_LONG);
+           snackBar.show();
+       }
+       else if(buttonSelected==false){
+           Snackbar snackBar = Snackbar.make(layout,
+                   "Please set the category!!", Snackbar.LENGTH_LONG);
+           snackBar.show();
+       }
+        else {
+           String task_title = titleEditText.getText().toString();
+           int selectedId = radioGroup.getCheckedRadioButtonId();
+           radioButton = (RadioButton) view.findViewById(selectedId);
+           if (radioButton.getText().toString().equals(getString(R.string.low_priority)))
+               priority = 1;
+           if (radioButton.getText().toString().equals(getString(R.string.medium_priority)))
+               priority = 2;
+           if (radioButton.getText().toString().equals(getString(R.string.high_priority)))
+               priority = 3;
 
-        Date date = new Date();
-        try {
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            date = format.parse(datePicker.getText().toString());
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
+           Date date = new Date();
+           try {
+               DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+               date = format.parse(datePicker.getText().toString());
+           } catch (ParseException ex) {
+               ex.printStackTrace();
+           }
 
-        Task task = new Task(task_title, categoryName, date, null, time, priority);
-        repository.addTask(task);
-        if (task.getTaskReminder() != null) {
-            String datefor_reminder = datePicker.getText().toString();
-            String time = task.getTaskReminder();
-            String title = task.getTitle();
-            setAlaram(title, datefor_reminder, time);
-        }
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        startActivity(intent);
-
+           Task task = new Task(task_title, categoryName, date, null, time, priority);
+           repository.addTask(task);
+           if (task.getTaskReminder() != null) {
+               String datefor_reminder = datePicker.getText().toString();
+               String time = task.getTaskReminder();
+               String title = task.getTitle();
+               setAlaram(title, datefor_reminder, time);
+           }
+           Intent intent = new Intent(getContext(), MainActivity.class);
+           intent.putExtra("insertmessage","A new task has been added");
+           startActivity(intent);
+       }
     }
 
     public void setAlaram(String task, String date, String time) {

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/addFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -141,7 +147,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margintop"
         android:drawableStart="@drawable/calendar"
-        android:text="@string/set_date"
+        android:hint="@string/set_date"
         app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/task_reminder"
@@ -157,7 +163,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="@dimen/marginend"
         android:drawableStart="@drawable/reminder"
-        android:text="@string/set_reminder"
+        android:hint="@string/set_reminder"
         app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -226,3 +232,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

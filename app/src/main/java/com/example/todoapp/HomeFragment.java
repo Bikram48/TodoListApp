@@ -30,7 +30,11 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.io.Serializable;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
+
 public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
+    private static final int REQUEST_CODE = 1;
     private static final int LENGTH_LONG = 10;
     private RecyclerView recyclerView;
     private Repository repository;
@@ -135,7 +139,7 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
                 mAlterDialog.setMessage(getString(R.string.delete_message))
                         .setCancelable(false)
                         .setTitle(getString(R.string.app_name))
-                        .setIcon(R.mipmap.ic_launcher);
+                        .setIcon(R.drawable.delete_forever);
                 mAlterDialog.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -164,7 +168,7 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
         }
         if(btnStatus.equals("edit")){
             Intent intent=EditTaskActivity.getIntent(getContext(),taskList.get(index));
-            startActivity(intent);
+            startActivityForResult(intent,REQUEST_CODE);
         }
         if(btnStatus.equals("finished")){
             taskList.remove(index);
@@ -187,6 +191,18 @@ public class HomeFragment extends Fragment implements TaskAdapter.ItemClicked{
                             }
                         )
                     .show();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQUEST_CODE){
+            if(resultCode==RESULT_OK){
+                Snackbar snackBar = Snackbar.make(getView(),
+                        data.getStringExtra("message").toString(), Snackbar.LENGTH_LONG);
+                snackBar.show();
+            }
         }
     }
 }

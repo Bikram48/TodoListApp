@@ -29,6 +29,7 @@ import com.example.todoapp.data.Task;
 import com.example.todoapp.data.TodoDao;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -54,18 +55,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         loadFragment(new HomeFragment());
         bottomNavigationView=findViewById(R.id.bottomNavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.calendarMenu:
-                Toast.makeText(this, "Calendar menu is selected", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onOptionsItemSelected: calendar");
-                break;
-
+        Intent intent=getIntent();
+        String message=intent.getStringExtra("insertmessage");
+        if(message!=null) {
+            Snackbar snackBar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);
+            snackBar.show();
         }
-        return super.onOptionsItemSelected(item);
     }
 
     private boolean loadFragment(Fragment fragment){

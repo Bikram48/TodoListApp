@@ -53,58 +53,31 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/set_due_date"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_title" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
-        android:text="@string/set_reminder"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <Button
         android:id="@+id/update_date_picker"
-        android:layout_width="204dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
         android:drawableStart="@drawable/calendar"
         android:text="@string/set_date"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:backgroundTint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintEnd_toStartOf="@+id/task_reminder"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/task_reminder"
-        android:layout_width="204dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:drawableLeft="@drawable/reminder"
-        android:text="@string/reminder"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:backgroundTint="@color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/update_date_picker"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/update_date_picker"
-        app:layout_constraintStart_toStartOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/set_priority"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +132,7 @@
         app:layout_constraintTop_toBottomOf="@+id/update_priority" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/cancelBtn"
         android:layout_width="204dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"

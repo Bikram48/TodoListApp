@@ -1,11 +1,13 @@
 package com.example.todoapp;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 
 import com.example.todoapp.data.Repository;
 import com.example.todoapp.data.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -45,13 +48,14 @@ public class EditTaskActivity extends AppCompatActivity {
     private AutoCompleteTextView category_items;
     private TextInputEditText taskTitle;
     private Button datePicker;
-    private Button timePicker;
     private Button update_task_btn;
+    private Button cancelBtn;
     private int priority;
     private RadioGroup update_priority;
     private Repository repository;
     private String selected_category;
     Task task;
+    View view;
     ArrayList<String> categoryList;
     ArrayAdapter<String> adapterCategoryList;
     private int position;
@@ -66,10 +70,10 @@ public class EditTaskActivity extends AppCompatActivity {
         category_dropdown=findViewById(R.id.category_dropdown);
         category_items=findViewById(R.id.category_items);
         datePicker=findViewById(R.id.update_date_picker);
-        timePicker=findViewById(R.id.task_reminder);
         update_priority=findViewById(R.id.update_priority);
         categoryList=new ArrayList<>();
         taskTitle=findViewById(R.id.task_title);
+        view=findViewById(android.R.id.content);
         update_task_btn=findViewById(R.id.update_btn);
         update_task_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +81,36 @@ public class EditTaskActivity extends AppCompatActivity {
                 updateTasks();
             }
         });
+        cancelBtn=findViewById(R.id.cancelBtn);
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayCancelMessage();
+            }
+        });
         repository = Repository.getRepository(this.getApplication());
         addCategory();
+    }
+
+    private void displayCancelMessage() {
+        AlertDialog.Builder mAlterDialog = new AlertDialog.Builder(this);
+        mAlterDialog.setMessage(getString(R.string.edit_cancel_promt))
+                .setCancelable(false)
+                .setTitle(getString(R.string.app_name))
+                .setIcon(R.drawable.cancel);
+        mAlterDialog.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               finish();
+            }
+        });
+        mAlterDialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        mAlterDialog.show();
     }
 
     private void addCategory(){
@@ -111,36 +143,57 @@ public class EditTaskActivity extends AppCompatActivity {
         }
     }
     public void updateTasks(){
-        String task_title=taskTitle.getText().toString();
-        int selectedId = -1;
-        selectedId=update_priority.getCheckedRadioButtonId();
-        Date updated_date=new Date();
+        if(taskTitle.getText().toString().equals("")){
+            Snackbar snackBar = Snackbar.make(view,
+                    "Please input task!!", Snackbar.LENGTH_LONG);
+            snackBar.show();
+        }
+        else if(update_priority.getCheckedRadioButtonId()==-1){
+            Snackbar snackBar = Snackbar.make(view,
+                    "Please set the priority!!", Snackbar.LENGTH_LONG);
+            snackBar.show();
+        }
+        else if(datePicker.getText().toString().isEmpty()){
+            Snackbar snackBar = Snackbar.make(view,
+                    "Please pick the date!!", Snackbar.LENGTH_LONG);
+            snackBar.show();
+        }
+        else {
+            String task_title = taskTitle.getText().toString();
+            int selectedId = -1;
+            selectedId = update_priority.getCheckedRadioButtonId();
+            Date updated_date = new Date();
 
-        try {
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            updated_date = format.parse(datePicker.getText().toString());
-        }catch (ParseException ex){
-            ex.printStackTrace();
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                updated_date = format.parse(datePicker.getText().toString());
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+            switch (selectedId) {
+                case R.id.low_priority:
+                    priority = LOW_PRIORITY;
+                    break;
+                case R.id.medium_priority:
+                    priority = MEDIUM_PRIORITY;
+                    break;
+                case R.id.high_priority:
+                    priority = HIGH_PRIORITY;
+                    break;
+            }
+
+            task.setTitle(task_title);
+            task.setUpdatedDate(updated_date);
+            task.setPriority(priority);
+            if (selected_category != null) {
+                task.setCategory(selected_category);
+            }
+            repository.update(task);
+            Intent intent=new Intent();
+            intent.putExtra("message","Task is updated successfully");
+            setResult(RESULT_OK,intent);
+            finish();
         }
-        switch (selectedId){
-            case R.id.low_priority:
-                priority=LOW_PRIORITY;
-                break;
-            case R.id.medium_priority:
-                priority=MEDIUM_PRIORITY;
-                break;
-            case R.id.high_priority:
-                priority=HIGH_PRIORITY;
-                break;
-        }
-        task.setTitle(task_title);
-        task.setUpdatedDate(updated_date);
-        task.setPriority(priority);
-        if(selected_category!=null) {
-            task.setCategory(selected_category);
-        }
-        repository.update(task);
-        finish();
     }
     private void setItems() {
         taskTitle.setText(task.getTitle());
@@ -152,12 +205,7 @@ public class EditTaskActivity extends AppCompatActivity {
                 pickDate();
             }
         });
-        timePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pickTime();
-            }
-        });
+
         switch (task.getPriority()){
             case 1:
                 update_priority.check(R.id.low_priority);
@@ -187,20 +235,6 @@ public class EditTaskActivity extends AppCompatActivity {
             }
         },cYear,cMonth,cDay);
         datePickerDialog.show();
-    }
-
-    void pickTime() {
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String time = hourOfDay + ":" + minute;
-                timePicker.setText(time);
-            }
-        }, hour, minute, false);
-        timePickerDialog.show();
     }
 
     public static Intent getIntent(Context context,Task task){
