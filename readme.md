@@ -47,7 +47,7 @@ Hamro To-Do has several features which will be useful for you to manage your tas
   - Choose the desired time on the timepicker to set the reminder.
 
 
-<img src="./hamrotodo.gif" width="70%" height="1000"/>
+<img src="./hamrotodo.gif" width="60%" height="1000"/>
 
 
 <h2 text-align:center;>Thank You for using the application!</h2>
