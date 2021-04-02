@@ -2,7 +2,7 @@ Hamro to-do is a todo list application which will help you to organize your task
 Thank You for using the application. <br>
 Regards.<br>
 Developed by: Bikram Chand (77202514)<br>
-Git Link for application source code: 
+Git Link for application source code: https://github.com/Bikram48/TodoListApp.git
 
 <h3>User Guidelines</h3>
 Hamro To-Do has several features which will be useful for you to manage your tasks. Some of the features of the app along with its tutorial has been discussed below:<br>
