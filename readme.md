@@ -4,7 +4,7 @@ Git Link for application source code:
 
 <h3>User Guidelines</h3>
 Hamro To-Do has several features which will be useful for you to manage your tasks. Some of the features of the app along with its tutorial has been discussed below:
-- Home Page
+Home Page
   - This page will display all the task you have added in the application
   - You can find the menu at the top right-hand corner for additional features of the application
  The navigation menu at the bottom of the page will help you to choose homepage, abount application.
@@ -35,7 +35,8 @@ Hamro To-Do has several features which will be useful for you to manage your tas
   - Click the set reminder button from the add task form.
   - Choose the desired time on the timepicker to set the reminder.
 
-![](./hamrotodo.gif)
+
+<img src="./hamrotodo.gif" width="250" height="400"/>
 
 Thank You for using the application!
 
