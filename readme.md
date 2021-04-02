@@ -36,7 +36,7 @@ Home Page
   - Choose the desired time on the timepicker to set the reminder.
 
 
-<img src="./hamrotodo.gif" width="250" height="400"/>
+<img src="./hamrotodo.gif" width="50%" height="600"/>
 
 Thank You for using the application!
 
