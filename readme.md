@@ -38,5 +38,6 @@ Home Page
 
 <img src="./hamrotodo.gif" width="50%" height=1000"/>
 
+
 Thank You for using the application!
 
